@@ -1,5 +1,7 @@
 package com.eventsar.model;
 
+import com.eventsar.util.RandomGUID;
+
 public class AbstractPersistentObject
 {
     /** Unique GUID of this object. */
@@ -10,7 +12,8 @@ public class AbstractPersistentObject
 
     public AbstractPersistentObject ()
     {
-        // TODO consider initializing GUID here
+        // default to create a new one
+        setId( new RandomGUID().toString() );
     }
 
     /**

@@ -6,19 +6,19 @@
 <hibernate-mapping>
     <class name="com.eventsar.model.Event" table="t_event">
         <id name="id" column="id">
-            <generator class="guid"/>
+            <generator class="assigned"/>
         </id>
 
         <property name="startInterval" column="startInterval"/>
         <property name="endInterval" column="endInterval"/>
         <property name="statusEncoding" column="statusEncoding"/>
 
-        <set role="rsvps" table="t_rsvp">
+        <set name="rsvps" table="t_rsvp">
             <key column="eventid"/>
             <one-to-many class="com.eventsar.model.Rsvp"/>
         </set>
 
-        <set role="details" table="t_event_detail">
+        <set name="details" table="t_event_detail">
             <key column="eventid"/>
             <one-to-many class="com.eventsar.model.EventDetail"/>
         </set>

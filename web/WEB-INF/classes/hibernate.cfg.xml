@@ -30,6 +30,11 @@
         <!-- Drop and re-create the database schema on startup -->
         <!-- <property name="hbm2ddl.auto">create</property> -->
 
+        <mapping resource="com/eventsar/model/Event.hbm.xml"/>
+        <mapping resource="com/eventsar/model/EventDetail.hbm.xml"/>
+        <mapping resource="com/eventsar/model/Rsvp.hbm.xml"/>
+        <mapping resource="com/eventsar/model/User.hbm.xml"/>
+
     </session-factory>
 
 </hibernate-configuration>
