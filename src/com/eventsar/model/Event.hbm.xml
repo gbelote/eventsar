@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.eventsar.model.Event" table="t_event">
+        <id name="id" column="id">
+            <generator class="guid"/>
+        </id>
+
+        <property name="startInterval" column="startInterval"/>
+        <property name="endInterval" column="endInterval"/>
+        <property name="statusEncoding" column="statusEncoding"/>
+
+        <set role="rsvps" table="t_rsvp">
+            <key column="eventid"/>
+            <one-to-many class="com.eventsar.model.Rsvp"/>
+        </set>
+
+        <set role="details" table="t_event_detail">
+            <key column="eventid"/>
+            <one-to-many class="com.eventsar.model.EventDetail"/>
+        </set>
+    </class>
+</hibernate-mapping>
+

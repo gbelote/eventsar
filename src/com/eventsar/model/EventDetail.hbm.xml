@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.eventsar.model.EventDetail" table="t_event_detail">
+        <id name="id" column="id">
+            <generator class="guid"/>
+        </id>
+
+        <key-many-to-one name="event" class="com.eventsar.model.Event" column="eventid"/>
+        <key-property name="key" column="key"/>
+
+        <property name="value" column="value"/>
+    </class>
+</hibernate-mapping>
+
+
