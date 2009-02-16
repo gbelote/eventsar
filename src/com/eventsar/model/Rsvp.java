@@ -2,7 +2,7 @@ package com.eventsar.model;
 
 import java.util.Set;
 
-public class Rsvp extends AbstractPersistentObject
+public class Rsvp extends AbstractGuidPersistentObject
 {
     private Event _event;
     private User _user;

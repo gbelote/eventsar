@@ -33,6 +33,7 @@
         <mapping resource="com/eventsar/model/Event.hbm.xml"/>
         <mapping resource="com/eventsar/model/EventDetail.hbm.xml"/>
         <mapping resource="com/eventsar/model/Rsvp.hbm.xml"/>
+        <mapping resource="com/eventsar/model/TimePref.hbm.xml"/>
         <mapping resource="com/eventsar/model/User.hbm.xml"/>
 
     </session-factory>

@@ -2,7 +2,7 @@ package com.eventsar.model;
 
 import java.util.*;
 
-public class User extends AbstractPersistentObject
+public class User extends AbstractGuidPersistentObject
 {
     private String _email;
 

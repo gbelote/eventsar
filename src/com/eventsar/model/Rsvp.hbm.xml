@@ -11,6 +11,11 @@
 
         <many-to-one name="event" class="com.eventsar.model.Event" column="eventid"/>
         <many-to-one name="user" class="com.eventsar.model.User" column="userid"/>
+
+        <set name="timePrefs" table="t_timepref">
+            <key column="rsvpid"/>
+            <one-to-many class="com.eventsar.model.TimePref"/>
+        </set>
     </class>
 </hibernate-mapping>
 

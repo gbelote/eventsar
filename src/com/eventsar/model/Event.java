@@ -2,48 +2,8 @@ package com.eventsar.model;
 
 import java.util.*;
 
-public class Event extends AbstractPersistentObject
+public class Event extends AbstractGuidPersistentObject
 {
-    public enum Status
-    {
-        PROPOSED (1),
-        PLANNED (2),
-        MARKED_FOR_DELETE (3);
-
-        private final int _encoding;
-        private final static Map <Integer, Status> _toStatus =
-                new HashMap <Integer, Status> ();
-
-        // Evaluated after construction
-        static
-        {
-            for( Status s : values() )
-            {
-                if( _toStatus.containsKey( s.getEncoding() ) )
-                {
-                    throw new RuntimeException( "Duplicate encoding: "+s.getEncoding() );
-                }
-
-                _toStatus.put( s.getEncoding(), s );
-            }
-        }
-
-        private Status (int encoding)
-        {
-            _encoding = encoding;
-        }
-
-        public int getEncoding ()
-        {
-            return _encoding;
-        }
-
-        public static Status getStatus (int encoding)
-        {
-            return _toStatus.get( encoding );
-        }
-    }
-
     /** Start date of this event. */
     private Date _startInterval;
     /** End date of this event. */
@@ -104,6 +64,46 @@ public class Event extends AbstractPersistentObject
                 detail.setValue(value);
                 return;
             }
+        }
+    }
+
+    public enum Status
+    {
+        PROPOSED (1),
+        PLANNED (2),
+        MARKED_FOR_DELETE (3);
+
+        private final int _encoding;
+        private final static Map <Integer, Status> _toStatus =
+                new HashMap <Integer, Status> ();
+
+        // Evaluated after construction
+        static
+        {
+            for( Status s : values() )
+            {
+                if( _toStatus.containsKey( s.getEncoding() ) )
+                {
+                    throw new RuntimeException( "Duplicate encoding: "+s.getEncoding() );
+                }
+
+                _toStatus.put( s.getEncoding(), s );
+            }
+        }
+
+        private Status (int encoding)
+        {
+            _encoding = encoding;
+        }
+
+        public int getEncoding ()
+        {
+            return _encoding;
+        }
+
+        public static Status getStatus (int encoding)
+        {
+            return _toStatus.get( encoding );
         }
     }
 }

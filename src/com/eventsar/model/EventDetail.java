@@ -2,7 +2,7 @@ package com.eventsar.model;
 
 import java.io.Serializable;
 
-public class EventDetail extends AbstractPersistentObject
+public class EventDetail extends AbstractGuidPersistentObject
 {
     private Event _event;
     private String _key;
