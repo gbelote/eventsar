@@ -1,1 +1,35 @@
-Show
+eventId: $eventId
+<br/>
+event: $event
+
+<br/>
+There are $event.rsvps.size() RSVPs for this event.
+
+<table border="1">
+    <tr>
+        <th>Invitee</th>
+        <th>Free</th>
+    </tr>
+
+    #foreach( $rsvp in $event.rsvps )
+        <tr>
+            <td>$rsvp.user.email</td>
+            <td>
+                <ul>
+                    #foreach( $tp in $rsvp.timePrefs )
+                        <li>From $tp.startInterval to $tp.endInterval</li>
+                    #end
+                </ul>
+            </td>
+        </tr>
+    #end
+</table>
+
+<table border="1">
+    <tr><th colspan="2"><center>Details</center></th></tr>
+
+    #foreach( $detail in $event.details )
+        <tr><td>$detail.name</td><td>$detail.value</td></tr>
+    #end
+</table>
+

@@ -13,6 +13,7 @@ import org.apache.velocity.context.*;
 
 import org.hibernate.*;
 
+import com.eventsar.model.*;
 import com.eventsar.util.*;
 
 public class ShowEventServlet extends HttpServlet
@@ -28,10 +29,25 @@ public class ShowEventServlet extends HttpServlet
         try
         {
             res.setContentType( "text/html" );
-            PrintWriter out = res.getWriter ();
+            final PrintWriter out = res.getWriter ();
 
-            VelocityContext ctx = new VelocityContext();
+            final VelocityContext ctx = new VelocityContext();
             ss.beginTransaction();
+
+            final String eventId = req.getParameter("id");
+            ctx.put("eventId", eventId);
+
+            final Event event;
+            if( eventId == null )
+            {
+                event = null;
+            }
+            else
+            {
+                event = (Event) ss.load(Event.class, eventId);
+            }
+
+            ctx.put("event", event);
 
             final VelocityEngine ve = VelocityUtil.getEngine ();
             ve.mergeTemplate( sTemplate, ctx, out );
@@ -44,6 +60,4 @@ public class ShowEventServlet extends HttpServlet
         }
     }
 }
-
-
 

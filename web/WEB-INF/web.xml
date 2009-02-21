@@ -30,12 +30,27 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <servlet>
+        <servlet-name>UrlAbbrRedirect</servlet-name>
+        <servlet-class>com.eventsar.servlet.UrlAbbrRedirect</servlet-class>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>1</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
 
   <servlet-mapping>
     <servlet-name>init</servlet-name>
     <url-pattern>/init</url-pattern>
   </servlet-mapping>
 
+
+  <servlet-mapping>
+    <servlet-name>UrlAbbrRedirect</servlet-name>
+    <url-pattern>/do</url-pattern>
+  </servlet-mapping>
 
   <servlet-mapping>
     <servlet-name>show</servlet-name>
