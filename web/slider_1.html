@@ -8,9 +8,6 @@
 
         <style type="text/css">
             .leftPointer {
-                height: 40px;
-                border-right: 1px solid black;
-                border-bottom: 1px solid black;
             }
 
             #CONTAINER {
@@ -24,12 +21,17 @@
             }
 
             #CONTAINER .slider{
+                position: relative;
                 margin-left: 3em;
                 margin-right: 3em;
+                //border: 1px dashed blue;
             }
 
             #CONTAINER .leftPointer {
+                height: 30px;
                 position: relative;
+                border-right: 1px solid black;
+                border-bottom: 1px solid black;
             }
 
             #CONTAINER .leftPointer .label {
@@ -40,6 +42,23 @@
                 margin-left: -2px;
                 text-align: right;
             }
+
+            #CONTAINER .rightPointer {
+                position: absolute;
+                height: 30px;
+                right: 0;
+                bottom: 0;
+                border-bottom: 1px solid black;
+                border-left: 1px solid black;
+            }
+
+            #CONTAINER .rightPointer .label {
+                position: absolute;
+                bottom: -0.75em;
+                width: 20em;
+                right: -20em;
+                margin-right: -2px;
+            }
         </style>
 
 		<script type="text/javascript">
@@ -48,8 +67,11 @@
                     var sldr = $('#SLIDER');
                     var ppv = sldr.width() / 100;
                     var leftV = sldr.slider('option', 'values')[0];
+                    var rightV = sldr.slider('option', 'values')[1];
                     $('.leftPointer').css('width', 2 + leftV * ppv);
                     $('.leftPointer .label').text(leftV);
+                    $('.rightPointer').css('width', 0 + (100-rightV) * ppv);
+                    $('.rightPointer .label').text(rightV);
                 };
 
                 $('#SLIDER').slider({
@@ -69,6 +91,9 @@
                 <div id="SLIDER"></div>
                 <div class="leftPointer">
                     <div class="label">7:30pm</div>
+                </div>
+                <div class="rightPointer">
+                    <div class="label">9:45pm</div>
                 </div>
             </div>
         </div>
