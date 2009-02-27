@@ -1,0 +1,77 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Slider, attempt #1</title>
+		<link type="text/css" href="css/theme_start/ui.all.css" rel="Stylesheet" />	
+		<script type="text/javascript" src="js/jquery-1.3.1.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-personalized-1.6rc6.js"></script>
+
+        <style type="text/css">
+            .leftPointer {
+                height: 40px;
+                border-right: 1px solid black;
+                border-bottom: 1px solid black;
+            }
+
+            #CONTAINER {
+                width: 400px;
+                height: 300px;
+                border: 1px solid black;
+                padding: 10px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 100px;
+            }
+
+            #CONTAINER .slider{
+                margin-left: 3em;
+                margin-right: 3em;
+            }
+
+            #CONTAINER .leftPointer {
+                position: relative;
+            }
+
+            #CONTAINER .leftPointer .label {
+                position: absolute;
+                left: -20em;
+                bottom: -0.75em;
+                width: 20em;
+                margin-left: -2px;
+                text-align: right;
+            }
+        </style>
+
+		<script type="text/javascript">
+            $(function () {
+                var updateLeft = function (e,ui) {
+                    var sldr = $('#SLIDER');
+                    var ppv = sldr.width() / 100;
+                    var leftV = sldr.slider('option', 'values')[0];
+                    $('.leftPointer').css('width', 2 + leftV * ppv);
+                    $('.leftPointer .label').text(leftV);
+                };
+
+                $('#SLIDER').slider({
+                    values: [5,95],
+                    range: 'max',
+                    slide: updateLeft
+                });
+
+                updateLeft (false,false);
+            });
+        </script>
+    </head>
+
+    <body>
+        <div id="CONTAINER">
+            <div class="slider">
+                <div id="SLIDER"></div>
+                <div class="leftPointer">
+                    <div class="label">7:30pm</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
